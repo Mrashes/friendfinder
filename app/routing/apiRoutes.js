@@ -1,11 +1,18 @@
-app.get("/api/friends", function(req, res) {
+let friends = require('../data/friends.js');
+let express = require("express");
+let bodyParser = require("body-parser");
+let path = require("path");
+let app = express();
+
+let json = app.get("/api/friends", function(req, res) {
     //dispay JSON
+    res.render(friends)
   return res.JSON(friends);
 });
 
-app.post("/api/friends", function(req, res) {
+let post = app.post("/api/friends", function(req, res) {
     //  * A POST routes `/api/friends`. This will be used to handle incoming survey results. This route will also be used to handle the compatibility logic. 
-  var newuser = req.body;
+  let newuser = req.body;
 
   console.log(newUser);
 
@@ -13,3 +20,5 @@ app.post("/api/friends", function(req, res) {
 
   res.json(friends);
 });
+
+module.exports = json, post;

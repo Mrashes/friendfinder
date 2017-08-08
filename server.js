@@ -1,12 +1,14 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var path = require("path");
-var apiRoutes = require("./app/routing/apiRoutes.js")
-var htmlRoutes = require("./app/routing/htmlRoutes.js")
+let friends = require('./app/data/friends.js');
+
+let express = require("express");
+let bodyParser = require("body-parser");
+let path = require("path");
+let apiRoutes = require("./app/routing/apiRoutes.js")
+let htmlRoutes = require("./app/routing/htmlRoutes.js")
 
 // Sets up the Express App
 // =============================================================
-var app = express();
+let app = express();
 
 app.set('port', (process.env.PORT || 3000));
 
@@ -14,11 +16,16 @@ app.set('port', (process.env.PORT || 3000));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
-// app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 
 // Routes
 // =============================================================
+
+// let json = app.get("/api/friends", function(req, res) {
+//   return res.JSON(friends);
+// });
+
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
