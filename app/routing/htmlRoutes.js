@@ -1,13 +1,15 @@
-let friends = require('../data/friends.js');
-let express = require("express");
-let bodyParser = require("body-parser");
 let path = require("path");
-let app = express();
 
-app.get("/survey", function(req, res) {
-  res.render(path.join(__dirname, "./app/public/survey.html"));
-});
+let htmlRoutes = {
+  survey : function(app) {
+    app.get("/survey", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/survey.html"));
+  })},
 
-app.get("/", function(req, res) {
-  res.render(path.join(__dirname, "./app/public/home.html"));
-});
+  home : function(app) {
+    app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/home.html"));
+  })},
+}
+
+module.exports = htmlRoutes

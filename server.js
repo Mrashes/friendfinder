@@ -15,22 +15,18 @@ app.set('port', (process.env.PORT || 3000));
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text());
+app.use(bodyParser.text({ type: 'text/html' }))
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 
 // Routes
 // =============================================================
 
-// let json = app.get("/api/friends", function(req, res) {
-//   return res.JSON(friends);
-// });
+htmlRoutes.home(app);
+htmlRoutes.survey(app);
 
-
-// Basic route that sends the user first to the AJAX Page
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "./app/public/home.html"));
-});
+apiRoutes.json(app, friends)
+apiRoutes.post(app, friends)
 
 // Starts the server to begin listening
 // =============================================================

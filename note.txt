@@ -1,0 +1,16 @@
+empty best friend
+
+Have a path to get the array of friends
+
+have a subloop of scores
+
+
+post
+    best friend {}
+
+    me = req.body
+    loop through friends    
+        loop through scores
+        if difference is closer to 0 ABS than best friend
+            change best friend
+            
