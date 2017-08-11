@@ -199,7 +199,7 @@
                 difference: 0
             };
 
-            console.log(me)
+            // console.log(me)
 
             $.ajax({
 			      url: `/api/friends`,
@@ -222,19 +222,13 @@
                             bestfriend.photo = res.friends[i].photo;
                             bestfriend.difference = difference
                         }
-
-                        
-
-                        // console.log(score1 + "     " + res.friends[i].name)
                     }
-                    //make bestfriend the modal after all that
-                    $.ajax({
-                        url: `/api/friends`,
-                        method: 'POST',
-                        data: me,
-                    }).done(function(res) {
-                        console.log(res)
-                    })
+
+                    //display best friend in the modal
+
+                    //currently sending back a 500 server issue.  Need to fix
+                    $.post( "/api/friends", `${me}` );
+
                 })
         });
     </script>
